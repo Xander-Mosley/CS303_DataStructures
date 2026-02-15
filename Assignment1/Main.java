@@ -45,9 +45,9 @@ public class Main {
             System.out.println("File not found: " + e.getMessage());
             return;
         }
-        for (int i = 0; i < data.length; i++) {
-            System.out.println("Index: " + i + ", Value: " + data[i]);
-        }
+        // for (int i = 0; i < data.length; i++) {
+        //     System.out.println("Index: " + i + ", Value: " + data[i]);
+        // }
 
         // System.out.println("Finding integer 42 in the array...");
         // int location = findInteger(data, 42);
@@ -56,7 +56,12 @@ public class Main {
         // ValueChange result = modifyInteger(data, 10, 99);
         // System.out.println("Returned Old Value: " + result.oldValue + ", Returned New Value: " + result.newValue);
 
-        data = addInteger(data, 99);
+        // data = addInteger(data, 99);
+        // for (int i = 0; i < data.length; i++) {
+        //     System.out.println("Index: " + i + ", Value: " + data[i]);
+        // }
+
+        data = removeInteger(data, 10);
         for (int i = 0; i < data.length; i++) {
             System.out.println("Index: " + i + ", Value: " + data[i]);
         }
@@ -112,6 +117,25 @@ public class Main {
             newArray[i] = array[i];
         }
         newArray[array.length] = newValue;
+        return newArray;
+    }
+
+    public static int[] removeInteger(int[] array, int index) {
+        /*
+        This method removes an integer at a specific index in the array
+        Similar to addInteger, I create a new array that is one element smaller than the original array, copy the old values except for the one at the specified index
+        */
+        if (array == null || index < 0 || index >= array.length) {
+            return array; // Return the original array if the index is out of bounds
+        }
+
+        int[] newArray = new int[array.length - 1];
+        for (int i = 0, j = 0; i < array.length; i++) {
+            if (i != index) {
+                newArray[j] = array[i];
+                j++;
+            }
+        }
         return newArray;
     }
 }

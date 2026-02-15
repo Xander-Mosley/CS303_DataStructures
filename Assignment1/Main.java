@@ -31,7 +31,7 @@ public class Main {
          - A function that adds a new integer to the end of the array.
         */
 
-        int[] data = new int[150];
+        int[] data = new int[100];
         try {
             File file = new File("A1input.txt");
             Scanner scanner = new Scanner(file);
@@ -45,16 +45,21 @@ public class Main {
             System.out.println("File not found: " + e.getMessage());
             return;
         }
-        // for (int i = 0; i < data.length; i++) {
-        //     System.out.println("Index: " + i + ", Value: " + data[i]);
-        // }
+        for (int i = 0; i < data.length; i++) {
+            System.out.println("Index: " + i + ", Value: " + data[i]);
+        }
 
         // System.out.println("Finding integer 42 in the array...");
         // int location = findInteger(data, 42);
         // System.out.println("Integer 42 found at index: " + location);
 
-        ValueChange result = modifyInteger(data, 10, 99);
-        System.out.println("Returned Old Value: " + result.oldValue + ", Returned New Value: " + result.newValue);
+        // ValueChange result = modifyInteger(data, 10, 99);
+        // System.out.println("Returned Old Value: " + result.oldValue + ", Returned New Value: " + result.newValue);
+
+        data = addInteger(data, 99);
+        for (int i = 0; i < data.length; i++) {
+            System.out.println("Index: " + i + ", Value: " + data[i]);
+        }
     }
     // Other methods are defined outside the main method, but still within the Main class
 
@@ -88,6 +93,26 @@ public class Main {
         This makes it easier to access both values without needing to use an array or other workaround
         */
         return new ValueChange(oldValue, newValue);
+    }
+
+    public static int[] addInteger(int[] array, int newValue) {
+        /*
+        This method adds a new integer to the end of the array
+        Since arrays in Java are fixed in size, I create a new array that is one element larger than the original array, copy the old values, and add the new value at the end
+        This is also about the point I realized that I should have created a generic class to handle the array and its operations
+        That would have allowed me to store values such as the current capacity and size of the array, and made it easier to manage the array without needing to create new arrays every time we add or remove elements
+        But this works for the purpose of this assignment
+        */
+        if (array == null) {
+            return new int[] {newValue};
+        }
+
+        int[] newArray = new int[array.length + 1];
+        for (int i = 0; i < array.length; i++) {
+            newArray[i] = array[i];
+        }
+        newArray[array.length] = newValue;
+        return newArray;
     }
 }
 // Non-public classes can follow the main class in the same file, but they cannot be accessed from outside this file

@@ -61,7 +61,21 @@ public class Main {
         //     System.out.println("Index: " + i + ", Value: " + data[i]);
         // }
 
-        data = removeInteger(data, 10);
+        // data = removeInteger(data, 10);
+        // for (int i = 0; i < data.length; i++) {
+        //     System.out.println("Index: " + i + ", Value: " + data[i]);
+        // }
+
+        int[] emptyData = null;
+        ValueChange result = modifyInteger(data, 200, 99);
+        if (result != null) {
+            System.out.println("Returned Old Value: " + result.oldValue + ", Returned New Value: " + result.newValue);
+        }
+        ValueChange result2 = modifyInteger(emptyData, 0, 4);
+        if (result2 != null) {
+            System.out.println("Returned Old Value: " + result2.oldValue + ", Returned New Value: " + result2.newValue);
+        }
+        data = addInteger(emptyData, 2);
         for (int i = 0; i < data.length; i++) {
             System.out.println("Index: " + i + ", Value: " + data[i]);
         }
@@ -89,15 +103,24 @@ public class Main {
         This method modifies the value of an integer at a specific index in the array
         It returns the old value and the new value back to the user
         */
-        int oldValue = array[index];
-        array[index] = newValue;
-        // System.out.println("Old Value: " + oldValue + ", New Value: " + newValue);
-        /*
-        I didn't recall if we were supposed to print the old and new values or return them, so I decided to return them
-        Java enfores single return type values, so I created a structure (ValueChange) to hold both the old and new values
-        This makes it easier to access both values without needing to use an array or other workaround
-        */
-        return new ValueChange(oldValue, newValue);
+        try {
+            int oldValue = array[index];
+            array[index] = newValue;
+            // System.out.println("Old Value: " + oldValue + ", New Value: " + newValue);
+            /*
+            I didn't recall if we were supposed to print the old and new values or return them, so I decided to return them
+            Java enfores single return type values, so I created a structure (ValueChange) to hold both the old and new values
+            This makes it easier to access both values without needing to use an array or other workaround
+            */
+            return new ValueChange(oldValue, newValue);
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Index out of bounds: " + e.getMessage());
+            return null; // Return null to indicate an error occurred
+        } catch (NullPointerException e) {
+            System.out.println("Array is empty: " + e.getMessage());
+            return null; // Return null to indicate an error occurred
+        }
     }
 
     public static int[] addInteger(int[] array, int newValue) {
@@ -108,16 +131,18 @@ public class Main {
         That would have allowed me to store values such as the current capacity and size of the array, and made it easier to manage the array without needing to create new arrays every time we add or remove elements
         But this works for the purpose of this assignment
         */
-        if (array == null) {
-            return new int[] {newValue};
-        }
+        try {
+            int[] newArray = new int[array.length + 1];
+            for (int i = 0; i < array.length; i++) {
+                newArray[i] = array[i];
+            }
+            newArray[array.length] = newValue;
+            return newArray;
 
-        int[] newArray = new int[array.length + 1];
-        for (int i = 0; i < array.length; i++) {
-            newArray[i] = array[i];
+        } catch (NullPointerException e) {
+            System.out.println("Array is empty: " + e.getMessage());
+            return new int[]{newValue}; // Return a new array with just the new value if the original array is null
         }
-        newArray[array.length] = newValue;
-        return newArray;
     }
 
     public static int[] removeInteger(int[] array, int index) {

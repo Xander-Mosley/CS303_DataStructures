@@ -1,5 +1,72 @@
+// Imports libraries (if needed) go here
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+/*
+Java uses braces, not indentations, to define code blocks
+Java is case-sensitive
+This class name must match the file name (Main.java), otherwise, it will cause a compilation error
+*/
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, world!");
+        /*
+        This is the main method, the entry point of any program
+        static means that no object of the class is needed to run this method
+        void means that this method does not return any value
+        String[] args is an array of strings that can hold command-line arguments passed to the program
+        Typically, put variables, inputs, logic, and outputs here
+        Usually end with some clean-up code, if necessary
+        E.g., scanner.close()
+        */
+       /*
+       Assignment steps:
+       1. Read data from an input file into a standard array
+       2. Create a function for checking if a certain integer exists in the array if the number is present return the index where the number is present.
+       3. Create a function that can modify the value of an integer when called with the index of the integer in the array and return the new value and old value back to the user.
+       4. Create a function that adds a new integer to the end of the array.
+       5. Create a function which intakes an index of an array and removes the integer altogether.
+       6. Add a try and catch blocks to the user inputs for the following functions from question 1.
+         - A function that can modify the value of an integer when called with the index of the integer in the array and return the new value and old value back to the user.
+         - A function that adds a new integer to the end of the array.
+        */
+
+        int[] data = new int[150];
+        try {
+            File file = new File("A1input.txt");
+            Scanner scanner = new Scanner(file);
+            int index = 0;
+            while (scanner.hasNextInt() && index < data.length) {
+                data[index] = scanner.nextInt();
+                index++;
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + e.getMessage());
+            return;
+        }
+        // for (int i = 0; i < data.length; i++) {
+        //     System.out.println("Index: " + i + ", Value: " + data[i]);
+        // }
+
+        System.out.println("Finding integer 42 in the array...");
+        int location = findInteger(data, 42);
+        System.out.println("Integer 42 found at index: " + location);
+    }
+    // Other methods are defined outside the main method, but still within the class
+    
+    public static int findInteger(int[] array, int target) {
+        /*
+        This method takes an array of integers and a target integer to find
+        It returns the index of the target if found, or -1 if not found
+        The typing is required because generics do not work with primitive types like int
+        I tried to use <T> and T to make it more flexible, but it didn't work
+        */
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == target) {
+                return i; // Return the index where the target is found
+            }
+        }
+        return -1; // Return -1 if the target is not found
+        // This is a standard convention in Java and C-style languages that clearly means "not found"
     }
 }

@@ -5,7 +5,8 @@ import java.util.Scanner;
 /*
 Java uses braces, not indentations, to define code blocks
 Java is case-sensitive
-This class name must match the file name (Main.java), otherwise, it will cause a compilation error
+Only one public class is allowed per file, and it must match the file name (Main.java)
+Otherwise, it will cause a compilation error
 */
 public class Main {
     public static void main(String[] args) {
@@ -48,12 +49,15 @@ public class Main {
         //     System.out.println("Index: " + i + ", Value: " + data[i]);
         // }
 
-        System.out.println("Finding integer 42 in the array...");
-        int location = findInteger(data, 42);
-        System.out.println("Integer 42 found at index: " + location);
+        // System.out.println("Finding integer 42 in the array...");
+        // int location = findInteger(data, 42);
+        // System.out.println("Integer 42 found at index: " + location);
+
+        ValueChange result = modifyInteger(data, 10, 99);
+        System.out.println("Returned Old Value: " + result.oldValue + ", Returned New Value: " + result.newValue);
     }
-    // Other methods are defined outside the main method, but still within the class
-    
+    // Other methods are defined outside the main method, but still within the Main class
+
     public static int findInteger(int[] array, int target) {
         /*
         This method takes an array of integers and a target integer to find
@@ -68,5 +72,33 @@ public class Main {
         }
         return -1; // Return -1 if the target is not found
         // This is a standard convention in Java and C-style languages that clearly means "not found"
+    }
+
+    public static ValueChange modifyInteger(int[] array, int index, int newValue) {
+        /*
+        This method modifies the value of an integer at a specific index in the array
+        It returns the old value and the new value back to the user
+        */
+        int oldValue = array[index];
+        array[index] = newValue;
+        // System.out.println("Old Value: " + oldValue + ", New Value: " + newValue);
+        /*
+        I didn't recall if we were supposed to print the old and new values or return them, so I decided to return them
+        Java enfores single return type values, so I created a structure (ValueChange) to hold both the old and new values
+        This makes it easier to access both values without needing to use an array or other workaround
+        */
+        return new ValueChange(oldValue, newValue);
+    }
+}
+// Non-public classes can follow the main class in the same file, but they cannot be accessed from outside this file
+// For this assigment, I'll just put all the code within one script for simplicity
+
+class ValueChange {
+    int oldValue;
+    int newValue;
+
+    ValueChange(int oldValue, int newValue) {
+        this.oldValue = oldValue;
+        this.newValue = newValue;
     }
 }

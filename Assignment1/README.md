@@ -15,7 +15,9 @@ To convey a deeper understanding of standard arrays within Java. The follow conc
 ## Folder Contents
 📁 Assignment1/
 
-├── 📄 `A1input.txt              # Input Data file (integers)`
+├── 🖼️ `images/                  # Folder of images`
+
+├── 📄 `A1input.txt              # Input data file (integers)`
 
 ├── 📘 `Assignment 1_Java.docs   # Assignment documentation (DOC)`
 
@@ -58,7 +60,7 @@ Ensure `A1input.txt` is located in the same directory as `Main.java` when runnin
 
 
 ## Program Features
-The program supports the following operations:
+This program supports the following operations:
 - Reading integers from an input file
 - Searching for a specific integer in an array
 - Modifying an integer at a specified index
@@ -105,7 +107,7 @@ The program supports the following operations:
   <img src="images/TryCatchBlockTests.png" alt="Testing the Try-Catch Blocks">
 </p>
 
-### All of Them Together
+### All of the Outputs Together
 <p align="center">
   <img src="images/All_Functions_Together.png" alt="Performing all of the Functions Together">
 </p>

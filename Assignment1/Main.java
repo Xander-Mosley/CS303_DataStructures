@@ -45,39 +45,62 @@ public class Main {
             System.out.println("File not found: " + e.getMessage());
             return;
         }
-        // for (int i = 0; i < data.length; i++) {
-        //     System.out.println("Index: " + i + ", Value: " + data[i]);
-        // }
-
-        // System.out.println("Finding integer 42 in the array...");
-        // int location = findInteger(data, 42);
-        // System.out.println("Integer 42 found at index: " + location);
-
-        // ValueChange result = modifyInteger(data, 10, 99);
-        // System.out.println("Returned Old Value: " + result.oldValue + ", Returned New Value: " + result.newValue);
-
-        // data = addInteger(data, 99);
-        // for (int i = 0; i < data.length; i++) {
-        //     System.out.println("Index: " + i + ", Value: " + data[i]);
-        // }
-
-        // data = removeInteger(data, 10);
-        // for (int i = 0; i < data.length; i++) {
-        //     System.out.println("Index: " + i + ", Value: " + data[i]);
-        // }
-
-        int[] emptyData = null;
-        ValueChange result = modifyInteger(data, 200, 99);
-        if (result != null) {
-            System.out.println("Returned Old Value: " + result.oldValue + ", Returned New Value: " + result.newValue);
+        System.out.println("\nReading data from the file...");
+        for (int i = 0; i < data.length; i += 10) {
+            for (int j = 0; j < 10 && (i + j) < data.length; j++) {
+                System.out.printf("%2d ", data[i + j]); // %2d pads single digits with a space for better alignment
+            }
+            System.out.println();
         }
-        ValueChange result2 = modifyInteger(emptyData, 0, 4);
+        for (int i = 0; i < data.length; i++) {
+            System.out.printf("%2d ", data[i]);
+        }
+
+        System.out.println("\nFinding integer 42 in the array...");
+        int location = findInteger(data, 42);
+        System.out.println("Integer 42 found at index: " + location);
+
+        System.out.println("\nModifying an integer in the array...");
+        ValueChange result = modifyInteger(data, 10, 99);
+        System.out.println("Returned Old Value: " + result.oldValue + ", Returned New Value: " + result.newValue);
+
+        System.out.println("\nAdding an integer in the array...");
+        data = addInteger(data, 99);
+        for (int i = 0; i < data.length; i += 10) {
+            for (int j = 0; j < 10 && (i + j) < data.length; j++) {
+                System.out.printf("%2d ", data[i + j]);
+            }
+            System.out.println();
+        }
+        for (int i = 0; i < data.length; i++) {
+            System.out.printf("%2d ", data[i]);
+        }
+
+        System.out.println("\nDeleting an integer in the array...");
+        data = removeInteger(data, 10);
+        for (int i = 0; i < data.length; i += 10) {
+            for (int j = 0; j < 10 && (i + j) < data.length; j++) {
+                System.out.printf("%2d ", data[i + j]);
+            }
+            System.out.println();
+        }
+        for (int i = 0; i < data.length; i++) {
+            System.out.printf("%2d ", data[i]);
+        }
+
+        System.out.println("\nTesting try and catch blocks...");
+        int[] emptyData = null;
+        ValueChange result2 = modifyInteger(data, 200, 99);
         if (result2 != null) {
             System.out.println("Returned Old Value: " + result2.oldValue + ", Returned New Value: " + result2.newValue);
         }
+        ValueChange result3 = modifyInteger(emptyData, 0, 4);
+        if (result3 != null) {
+            System.out.println("Returned Old Value: " + result3.oldValue + ", Returned New Value: " + result3.newValue);
+        }
         data = addInteger(emptyData, 2);
         for (int i = 0; i < data.length; i++) {
-            System.out.println("Index: " + i + ", Value: " + data[i]);
+            System.out.printf("%2d ", data[i]);
         }
     }
     // Other methods are defined outside the main method, but still within the Main class

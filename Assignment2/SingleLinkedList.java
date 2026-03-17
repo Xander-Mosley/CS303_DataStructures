@@ -270,4 +270,13 @@ public class SingleLinkedList<T> implements Iterable<T> {
     public int size() {
         return size;
     }
+
+    /*
+    Need to add more comments to each method
+    Should add the following methods:
+    addBefore(int index, T data)
+    addAfter(int index, T data)
+    removeBefore(int index)
+    removeAfter(int index)
+     */
 }

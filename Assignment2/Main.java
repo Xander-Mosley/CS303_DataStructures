@@ -5,11 +5,13 @@ import java.util.NoSuchElementException;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Testing SingleLinkedList...");
+        System.out.println("\nTesting SingleLinkedList...");
         testSingleLinkedList();
 
         System.out.println("\nTesting MyStack...");
         testMyStack();
+
+        System.out.println("\n");
     }
 
     public static void testSingleLinkedList() {
@@ -105,6 +107,7 @@ public class Main {
         System.out.println("pop(): " + stack.pop()); // removes 30
         System.out.println("pop(): " + stack.pop()); // removes 20
         System.out.println("After popping two elements -> size: " + stack.size());
+        System.out.println("Stack is empty? " + stack.isEmpty());
 
         // Peek & average with one element
         System.out.println("peek(): " + stack.peek());    // should be 10

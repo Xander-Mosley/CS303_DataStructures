@@ -290,29 +290,28 @@ public class MySingleLinkedList<T> implements Iterable<T> {
         return data;
     }
 
-    public boolean remove(int index) {
+    public T remove(int index) {
         /*
-        Removes the element at the specified index in the list.
-        Returns true if the element was removed, false otherwise.
+        Removes and returns the element at the specified index in the list.
+        Throws an IndexOutOfBoundsException if the index is out of bounds.
         */
         if (index < 0 || index >= size) {
-            return false;
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
         if (index == 0) {
-            removeFirst();
-            return true;
+            return removeFirst();
         }
         if (index == size - 1) {
-            removeLast();
-            return true;
+            return removeLast();
         }
         Node<T> current = head;
         for (int i = 0; i < index - 1; i++) {
             current = current.next;
         }
+        T data = current.next.data;
         current.next = current.next.next;
         size--;
-        return true;
+        return data;
     }
 
     public T removeBefore(T prior) {

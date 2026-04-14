@@ -36,5 +36,16 @@ public class Main {
         System.out.println("Index of last occurrence of " + target + ": " + index);
     }
 
-    public static void testInsertionSort() {}
+    public static void testInsertionSort() {
+        // Create an array of 10 random integers and sort the array using the insertion sort method
+        Integer[] arr = {5, 2, 9, 1, 5, 6, 7, 3, 4, 8};
+        MyDoubleLinkedList_withSorting<Integer> list = new MyDoubleLinkedList_withSorting<>(arr);
+        System.out.print("Unsorted array: [ ");
+        System.out.print(list.toString());
+        System.out.print("]\n");
+        list.insertionSort();
+        System.out.print("Sorted array: [ ");
+        System.out.print(list.toString());
+        System.out.print("]\n");
+    }
 }

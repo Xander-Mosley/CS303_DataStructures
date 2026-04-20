@@ -141,11 +141,11 @@ MyStack Tests:
 ### SingleLinkedList Test Results
 
 <p align="center">
-  <img src="images/SingleLinkedList_Test_Results.png" alt="Test Results for the Custom Single Linked List">
+  <img src="Images/SingleLinkedList_Test_Results.png" alt="Test Results for the Custom Single Linked List">
 </p>
 
 ### MyStack Test Results
 
 <p align="center">
-  <img src="images/MyStack_Test_Results.png" alt="Test Results for the Custom Stack using Java ArrayList">
+  <img src="Images/MyStack_Test_Results.png" alt="Test Results for the Custom Stack using Java ArrayList">
 </p>

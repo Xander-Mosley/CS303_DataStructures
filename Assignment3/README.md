@@ -77,7 +77,7 @@ The RecursiveLinearSearch is a custom, generic function that performs a linear s
 
 ### Insertion Sort
 
-An insertion sort method, named insertionSort(), was developed within the custom double linked list class framework, renamed MyDoubleLinkedList_withSorting<t>. The ground work for this method came from modifying the source code for the array based insertion sort provided in the lecture slides. Since the process was designed as a method instead of an external function, the process has access to node properties (head, tail, .next, and .prev). This avoids class functions such as getIndex() that require n operations are avoided, significantly reducing the required number of computations, or the Big-O, of this process from n³ to n².
+An insertion sort method, named insertionSort(), was developed within the custom double linked list class framework, renamed MyDoubleLinkedList_withSorting<T>. The ground work for this method came from modifying the source code for the array based insertion sort provided in the lecture slides. Since the process was designed as a method instead of an external function, the process has access to node properties (head, tail, .next, and .prev). This avoids class functions such as getIndex() that require n operations, reducing the required number of computations, or the Big-O, of this process from n³ to n².
 
 ## Outputs
 

@@ -8,6 +8,7 @@ public class Main {
         testLinearSearchFunction();
         System.out.println("\nTesting InsertionSort...");
         testInsertionSort();
+        System.out.println("\nAll tests completed.");
     }
 
     public static void testMyQueue() {
@@ -20,7 +21,8 @@ public class Main {
         }
         System.out.println("Queue: " + queue.toString());
         queue.move_to_rear();
-        System.out.println("Queue after moving front element to rear: " + queue.toString());
+        System.out.println("After moving front element to rear");
+        System.out.println("Queue: " + queue.toString());
     }
 
     public static void testLinearSearchFunction() {
@@ -44,7 +46,7 @@ public class Main {
         System.out.print(list.toString());
         System.out.print("]\n");
         list.insertionSort();
-        System.out.print("Sorted array: [ ");
+        System.out.print("Sorted array:   [ ");
         System.out.print(list.toString());
         System.out.print("]\n");
     }

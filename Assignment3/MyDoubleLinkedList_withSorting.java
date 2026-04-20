@@ -345,9 +345,14 @@ public class MyDoubleLinkedList_withSorting<T extends Comparable<T>> implements 
         }
         Node<T> loop_position = head.next;
         while (loop_position != null) {
-            T key = removeAfter(loop_position.prev.data); // Need to write a helper method to improve this process since the current position is known
+            T key = loop_position.data; // Store the current element to be compared
+            loop_position.prev.next = loop_position.next; // Remove the current element from the list
+            if (loop_position.next != null) {
+                loop_position.next.prev = loop_position.prev;
+            } else {
+                tail = loop_position.prev; // Update tail if we are removing the last element
+            }
             Node<T> j = loop_position.prev;
-            // Move elements of list[0..i-1], that are greater than key, to one position ahead of their current position
             while (j != null && j.data.compareTo(key) > 0) {
                 j = j.prev;
             }
@@ -364,6 +369,8 @@ public class MyDoubleLinkedList_withSorting<T extends Comparable<T>> implements 
                 newNode.prev = j;
                 if (j.next != null) {
                     j.next.prev = newNode;
+                } else {
+                    tail = newNode; // Update tail if we are inserting at the end
                 }
                 j.next = newNode;
             }

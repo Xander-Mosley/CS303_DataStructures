@@ -14,9 +14,9 @@ To convey a deeper understanding of linked lists and stacks within Java. The fol
 
 ### Folder Contents
 
-📁 Assignment1/
+📁 Assignment2/
 
-├── 🖼️ `images/                                           # Folder of images`
+├── 🖼️ `Images/                                           # Folder of images`
 
 ├── 📘 `Assignment 2_Java.docs                            # Assignment documentation (DOC)`
 

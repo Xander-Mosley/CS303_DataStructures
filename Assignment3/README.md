@@ -84,17 +84,17 @@ An insertion sort method, named insertionSort(), was developed within the custom
 ### MyQueue Results
 
 <p align="center">
-  <img src="images/MyQueue_Results.png" alt="Results for the Custom Listed-Based Queue">
+  <img src="Images/MyQueue_Results.png" alt="Results for the Custom Listed-Based Queue">
 </p>
 
 ### Recursive Linear Search Results
 
 <p align="center">
-  <img src="images/RecursiveLinearSearch_Results.png" alt="Results for the Recursive Linear Search Function">
+  <img src="Images/RecursiveLinearSearch_Results.png" alt="Results for the Recursive Linear Search Function">
 </p>
 
 ### Insertion Sort Results
 
 <p align="center">
-  <img src="images/InsertionSort_Results.png" alt="Results for the Insertion Sort Method">
+  <img src="Images/InsertionSort_Results.png" alt="Results for the Insertion Sort Method">
 </p>
